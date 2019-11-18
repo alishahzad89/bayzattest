@@ -31,9 +31,10 @@ context('Action',() => {
 
   })
     
-  it('Add an 1 employee details', () => {
+  it('Add employee 1 details', () => {
 
-    cy.get('.main-menu__link[data-external-id="add-employees-link"]').scrollIntoView().click()
+    cy.get('.main-menu__link[data-external-id="add-employees-link"]').as('MenuAddEmployeeBtn').scrollIntoView().click()
+    //Loign Again
     userLogin()
 
     //check for add employee button
@@ -42,6 +43,26 @@ context('Action',() => {
 
     
     addEmployeeDetais(Cypress.env('UserFirstName'),Cypress.env('UserLastName'),Cypress.env('UserEmailId'))
+    cy.get('.btn-link').next('button').should('have.text','Create').as('createBtn');
+    cy.get('@createBtn').click();
+
+    //verify success msg
+    cy.get('.media-body > .mar-no').should('have.text','Employee successfully added and invited to Bayzat Benefits')
+    cy.wait(5000)
+  })
+
+  it('Add employee 2 details', () => {
+
+    cy.get('.main-menu__link[data-external-id="add-employees-link"]').as('MenuAddEmployeeBtn').scrollIntoView().click()
+    //Loign Again
+    userLogin()
+
+    //check for add employee button
+    cy.get('.btn-primary[href="/enterprise/dashboard/employees/create"]').should('have.text','Add Employee').as('addEmployeeBtn')
+    cy.get('@addEmployeeBtn').click()
+
+    
+    addEmployeeDetais(Cypress.env('User2FirstName'),Cypress.env('User2LastName'),Cypress.env('User2EmailId'))
     cy.get('.btn-link').next('button').should('have.text','Create').as('createBtn');
     cy.get('@createBtn').click();
 
@@ -96,6 +117,14 @@ context('Action',() => {
     selectAndDeleteEmployee()
   })
 
+  it('Search and Verify employee 2 details then delete it', () => {
+    cy.get('.main-menu__link[data-external-id="view-team-link"]').scrollIntoView().click()
+    userLogin()    
+    searchEmployee(Cypress.env('User2FirstName') +' '+ Cypress.env('User2LastName'))
+    verifyEmployeeDetails()
+    selectAndDeleteEmployee()
+  })
+
   it('Logout from bayzat application', () => {
 
     cy.get('.main-menu__link[data-external-id="logout-link"]').scrollIntoView().click()
@@ -110,7 +139,7 @@ context('Action',() => {
     cy.get('[name="workEmail"]').type(emailAddress)
   }
 
- //Login
+ //Login function
   function userLogin() {
     
     cy.wait(3000)
@@ -121,15 +150,18 @@ context('Action',() => {
     cy.wait(3000)
   }
 
+  //Search function
   function searchEmployee(employee){
     cy.get('.search__input').type(employee,{delay : 20}).type('{enter}')
   }
 
+  //verify function 
   function verifyEmployeeDetails(){
     cy.get('.js-employee-list tbody tr').should('have.length','1').as('employeeData')
-    cy.get('@employeeData').find('td').should('have.length',7)  
+    cy.get('@employeeData').find('td').should('have.length',7)
   }
 
+   //Select and Delete function
   function selectAndDeleteEmployee(){
     
     cy.get('.js-employee-list tbody tr').find('td').eq(0).find('i').click()

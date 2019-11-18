@@ -4,12 +4,13 @@
  "env": {
     "LoginUser": "test+testcompany@bayzat.com",
     "LoginPassword": "123456789",
-    "UserFirstName": "Shahzad",
-    "UserLastName": "Ali",
+    "UserFirstName": "Bayzat",
+    "UserLastName": "Application",
     "UserEmailId" :"testbayzatapplication@gmail.com",
     "FromEmailId" :"noreply@bayzat.com",
     "EmailSubject" : "[Bayzat] Invitation to join [_Test Company_] on Bayzat",
-    "User2FirstName": "Bayzat",
-    "User2LastName": "Team"
+    "User2FirstName": "Shahzad",
+    "User2LastName": "Ali",
+    "User2EmailId" :"shahzadtalks@gmail.com"
   }
 }
