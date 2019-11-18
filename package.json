@@ -1,0 +1,17 @@
+{
+  "name": "bayzat",
+  "version": "1.0.0",
+  "description": "Test bayzat assingment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shahzad",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^3.6.0"
+  },
+  "devDependencies": {
+    "gmail-tester": "^1.1.5"
+  }
+}

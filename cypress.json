@@ -1,0 +1,15 @@
+{
+  "video" : true,
+  "pageLoadTimeout": 100000,
+ "env": {
+    "LoginUser": "test+testcompany@bayzat.com",
+    "LoginPassword": "123456789",
+    "UserFirstName": "Shahzad",
+    "UserLastName": "Ali",
+    "UserEmailId" :"testbayzatapplication@gmail.com",
+    "FromEmailId" :"noreply@bayzat.com",
+    "EmailSubject" : "[Bayzat] Invitation to join [_Test Company_] on Bayzat",
+    "User2FirstName": "Bayzat",
+    "User2LastName": "Team"
+  }
+}
